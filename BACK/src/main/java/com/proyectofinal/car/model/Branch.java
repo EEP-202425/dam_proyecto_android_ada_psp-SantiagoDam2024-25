@@ -55,8 +55,8 @@ public class Branch {
         return address;
     }
 
-    public void setAddress(String adrress) {
-        this.address = adrress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {
