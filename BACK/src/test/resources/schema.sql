@@ -2,7 +2,6 @@ DROP TABLE IF EXISTS rental;
 DROP TABLE IF EXISTS car;
 DROP TABLE IF EXISTS branch;
 
-
 -- Crear tabla Branch
 CREATE TABLE branch (
     branch_id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -32,7 +31,6 @@ CREATE TABLE rental (
         price DECIMAL(10, 2),
         status VARCHAR(50) NOT NULL, -- Este también puede ser un enum mapeado como texto
         car_id BIGINT NOT NULL,
-        client_id BIGINT NOT NULL,
         branch_from_id BIGINT NOT NULL,
         branch_to_id BIGINT NOT NULL,
         FOREIGN KEY (car_id) REFERENCES car(car_id),
