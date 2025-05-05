@@ -240,4 +240,24 @@ public class CarService {
 
         carRepository.delete(car.get());
     }
+
+    public Page<CarPreviewDTO> findAllByCarYear(int page, int size, String sortBy, String direction, int carYear) {
+        Pageable pageable = buildPageable(page, size, sortBy, direction);
+
+        Page<Car> carsByCarYear = carRepository.findAllByCarYear(carYear, pageable);
+
+        if (carsByCarYear.isEmpty()){
+            throw new NoCarsFoundByCarYearException("Cars not found by year" + carYear);
+        }
+
+        return carsByCarYear.map(car ->
+                new CarPreviewDTO(
+                        car.getCarId(),
+                        car.getModel(),
+                        car.getBrand(),
+                        car.getBranch().getCity(),
+                        car.getBranch().getName()
+                )
+        );
+    }
 }
