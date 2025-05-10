@@ -28,6 +28,7 @@ public class CarRegisterDTO {
 
     //GETTERS AND SETTERS
 
+    @NotNull
     public String getBrand() {
         return brand;
     }
