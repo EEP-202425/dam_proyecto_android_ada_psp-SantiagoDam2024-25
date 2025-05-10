@@ -117,12 +117,13 @@ public class CarService {
     // Method for Admin
 
     public Page<CarPreviewDTO> searchAvailableCarsForAdmin(
-            int page, int size, String sortBy, String direction, String brand,
-            String model, String branch, Integer carYear, StatusCar statusCar, Long client_id) {
+            int page, int size, String sortBy,
+            String direction, String brand,
+            String model, String branch, Integer carYear, Long client_id) {
 
         Pageable pageable = buildPageable(page, size, sortBy, direction);
 
-        Specification<Car> spec = CarSpecifications.filterBy(brand, model, branch, carYear, statusCar, client_id);
+        Specification<Car> spec = CarSpecifications.filterBy(brand, model, branch, carYear, StatusCar.AVAILABLE, client_id);
 
         Page<Car> cars = carRepository.findAll(spec, pageable);
 
