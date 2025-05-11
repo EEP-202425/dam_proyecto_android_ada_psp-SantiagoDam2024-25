@@ -61,5 +61,4 @@ public class CarUpdateDTO {
     public void setStatusCar(StatusCar statusCar) {
         this.statusCar = statusCar;
     }
-
 }
